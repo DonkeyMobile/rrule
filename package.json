@@ -24,7 +24,7 @@
     "prepublish": "npm run build",
     "build": "npm run lint && npm run format-check && tsc -b tsconfig.build.json && webpack && tsc dist/esm/**/*.d.ts",
     "clean": "rm -rf dist/",
-    "lint": "npm run eslint . --fix --config .eslintrc.js",
+    "lint": "eslint . --fix --config .eslintrc.js",
     "format": "npm run prettier --write .",
     "format-check": "npm run prettier --check .",
     "run-ts": "TS_NODE_PROJECT=tsconfig.json node --loader ts-node/esm",
