@@ -151,8 +151,7 @@ export const combine = function (date: Date, time: Date | Time) {
 }
 
 export const clone = function (date: Date | Time) {
-  const dolly = new Date(date.getTime())
-  return dolly
+  return new Date(date.getTime())
 }
 
 export const cloneDates = function (dates: Date[] | Time[]) {
@@ -211,8 +210,9 @@ const dateTZtoISO8601 = function (date: Date, timeZone: string) {
   return dateStr.replace(' ', 'T') + 'Z'
 }
 
+const localTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
+
 export const dateInTimeZone = function (date: Date, timeZone: string) {
-  const localTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone
   // Date constructor can only reliably parse dates in ISO8601 format
   const dateInLocalTZ = new Date(dateTZtoISO8601(date, localTimeZone))
   const dateInTargetTZ = new Date(dateTZtoISO8601(date, timeZone ?? 'UTC'))
